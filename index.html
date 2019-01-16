@@ -60,33 +60,71 @@
             This creates a form which uses the post method to put in user data to the url entered in the action.
          -->
         <form id="register" action="http://www.example.com/cg/register" method="post">
-            <label for="">Title</label>
-            <input type="text" name="" id="">
+            <!-- 
+                This label is what displays next to the correct "for" for the id it is given. The id corresponds to the id of the input, which is so you can click near the label and still put a control for the user.
+             -->
+            <label for="titleBox">Title</label>
+            <!-- 
+                The inputs all have a basic format of how they are displays. Beginning with the type, which is how our users will display their data, the ones used below are the text, which allows a user to enter in an string of text, tel, which only accepts numbers to correspond with a telephone number, and email, which only accepts email addresses.
+                
+                The name is a basic name which is what will show up when answers are recorded and sent somewhere else, which is done with the post method, referenced in the form above. 
 
-            <label for="">First Name*</label>
-            <input type="text" name="" id="">
+                The id allows the input to be specifically targeted in css, but also is what links a label to an input. 
 
-            <label for="">Last Name*</label>
-            <input type="text" name="" id="">
+                Below, the input is given a pseudo element of list, which links it to a datalist, an element which gives pre-populated suggestions to the value of the box. 
 
-            <label for="">Address*</label>
-            <input type="text" name="" id="">
+                The required pseudo-element means that an input box must be filled out before the form can be submitted. 
 
-            <label for="">Company or University</label>
-            <input type="text" name="" id="">
+                Patterns indicate a regular expression, which is the format in which an input form must be filled in. The phone one indicates that it might be a 10 digit number, seeing as how the zip code is optional, while the next 3 numbers and 4 number fields are required.
 
-            <label for="">E-mail*</label>
-            <input type="text" name="" id="">
+                Placeholder is text to give a hint to the user to know what sort of format to word their responses in.
+             -->
+            <input type="text" name="title" id="titleBox" list="titleList">
+            <datalist id="titleList">
+                <option value="Mr." />
+                <option value="Mrs." />
+                <option value="Ms." />
+                <option value="Prof." />
+                <option value="Dr." />
+                <option value="Assist. Prof." />
+                <option value="Assoc. Prof." />
+            </datalist>
 
-            <label for="">Phone Number*</label>
-            <input type="text" name="" id="">
+            <label for="fnBox">First Name*</label>
+            <input type="text" name="firstName" id="fnBox" required />
 
-            <label for="">ACGIP </label>
-            <input type="text" name="" id="">
+            <label for="lnBox">Last Name*</label>
+            <input type="text" name="lastName" id="lnBox" required />
 
-            <label for=""></label>
-            <input type="text" name="" id="">
+            <label for="addBox">Address*</label>
+            <input type="text" name="address" id="addBox" required />
 
+            <label for="groupBox">Company or University</label>
+            <input type="text" name="group" id="groupBox" />
+
+            <label for="mailBox">E-mail*</label>
+            <input type="email" name="email" id="mailBox" required />
+
+            <label for="phoneBox">Phone Number*</label>
+            <input type="tel" name="phoneNumber" id="phoneBox" required pattern="^\d{10}$|^(\(\d{3}\)\s*)?\d{3}[\s-]?\d{4}$"
+                placeholder="(nnn) nnn-nnnn" />
+
+            <label for="idBox">ACGIP Membership Number</label>
+            <input type="text" name="acgipID" id="idBox" pattern="^acgip\-\d{6}$" placeholder="acgip-nnnnnn" />
+
+            <label for="regList">Registration Category</label>
+            <!-- 
+                This selection list does not let users type in a response, but rather, choose a response from a preset list we give them.
+             -->
+            <select name="registerType" id="regList">
+                <option value="member">ACGIP Member ($695)</option>
+                <option value="nonmember">Non-Member ($795)</option>
+                <option value="student">Non-Member ($310)</option>
+                <option value="poster">Non-Member ($95)</option>
+                <option value="guest">Guest ($95)</option>
+            </select>
+
+            <p><input type="submit" value="continue"></p>
 
         </form>
 

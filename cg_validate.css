@@ -13,4 +13,35 @@
 
 
 /* Validation Styles */
+/* 
+Whenever any box is selected, it will change to this color.
+*/
+input:focus,
+select:focus,
+textarea:focus {
+    background-color: rgb(245, 245, 140);
+}
 
+/* 
+If what is stated above matches the specifications of the form we want, it will then turn the color below with a picture of a checkmark that does not repeat.
+*/
+input#fnBox:focus:valid,
+input#lnBox:focus:valid,
+input#addBox:focus:valid,
+input#mailBox:focus:valid,
+input#phoneBox:focus:valid,
+input#idBox:focus:valid {
+    background: rgb(220, 255, 220) url(cg_valid.png) right/contain no-repeat;
+}
+
+/* 
+However, if the information is entered incorrectly, we change the color and give it an x to show that is not how we want data to be entered.
+*/
+input#fnBox:focus:invalid,
+input#lnBox:focus:invalid,
+input#addBox:focus:invalid,
+input#mailBox:focus:invalid,
+input#phoneBox:focus:invalid,
+input#idBox:focus:invalid {
+    background: rgb(255, 232, 232) url(cg_invalid.png) right/contain no-repeat;
+}
